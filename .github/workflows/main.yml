@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
      run:
-      working-directory: ./frontend
+      working-directory: ./todo-app-2024/frontend
 
     steps:
       - uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
      run:
-      working-directory: ./backend
+      working-directory: ./todo-app-2024/backend
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 11
@@ -50,7 +50,7 @@ jobs:
       - name: Make executeable
         run: chmod +x ./gradlew
       - name: Build with Gradle
-        working-directory: ./backend
+        working-directory: ./todo-app-2024/backend
         run: ./gradlew build
 
   test-backend:
@@ -58,7 +58,7 @@ jobs:
     needs: build-backend
     defaults:
      run:
-      working-directory: ./backend
+      working-directory: ./todo-app-2024/backend
 
     steps:
       - uses: actions/checkout@v4
@@ -74,7 +74,7 @@ jobs:
       - name: Make executeable
         run: chmod +x ./gradlew
       - name: Test with Gradle
-        working-directory: ./backend
+        working-directory: ./todo-app-2024/backend
         run: ./gradlew test
 
   deploy-backend:
